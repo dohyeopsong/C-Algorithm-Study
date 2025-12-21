@@ -1,0 +1,29 @@
+// {
+//     "version": "0.2.0",
+//     "configurations": [
+//         {
+//             "name": "main파일 디버깅",
+//             "type": "lldb",
+//             "request": "launch",
+//             "program": "${workspaceFolder}/main",
+//             "args": [],
+//             "cwd": "${workspaceFolder}",
+//             "preLaunchTask": "빌드하기"
+//         }
+//     ]
+// }
+
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "현재파일 디버깅",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}", // <--- 실행 파일 이름도 자동으로 따라갑니다.
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "현재파일 빌드하기" // <--- tasks.json의 label과 일치시켜야 합니다.
+        }
+    ]
+}
