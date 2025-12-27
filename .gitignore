@@ -12,3 +12,6 @@
 
 # --- VS Code Settings (선택 사항) ---
 .vscode/
+
+# 모든 .out 파일 무시
+*.out
