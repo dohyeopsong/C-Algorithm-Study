@@ -1,7 +1,14 @@
-# 실행 파일 무시하기
-*.exe
-*.out
-*.o
-
-# 맥북 시스템 파일 무시하기
+# --- macOS System Files ---
 .DS_Store
+.AppleDouble
+.LSOverride
+
+# --- C/C++ Build Artifacts (컴파일된 파일들) ---
+*.o
+*.obj
+*.out
+*.exe
+*.dSYM/
+
+# --- VS Code Settings (선택 사항) ---
+.vscode/
