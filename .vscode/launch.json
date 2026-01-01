@@ -1,15 +1,46 @@
+// {
+//     "version": "0.2.0",
+//     "configurations": [
+//         {
+//             "name": "현재파일 디버깅 (CodeLLDB)",
+//             "type": "lldb",
+//             "request": "launch",
+//             "program": "${fileDirname}/${fileBasenameNoExtension}.out",
+//             "args": [],
+//             "cwd": "${workspaceFolder}",
+//             "preLaunchTask": "현재파일 빌드하기",
+//             "terminal": "integrated"
+//         }
+//     ]
+// }
+
 {
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "현재파일 디버깅 (CodeLLDB)",
+            /* [옵션 1] 윈도우 WSL용 설정 (GDB) */
+            "name": "Windows (WSL) 디버깅",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}.out",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "/usr/bin/gdb",
+            "preLaunchTask": "빌드 (자동 감지)"
+        },
+        {
+            /* [옵션 2] 맥(Mac)용 설정 (LLDB) */
+            "name": "Mac 디버깅",
             "type": "lldb",
             "request": "launch",
             "program": "${fileDirname}/${fileBasenameNoExtension}.out",
             "args": [],
             "cwd": "${workspaceFolder}",
-            "preLaunchTask": "현재파일 빌드하기",
-            "terminal": "integrated"
+            "preLaunchTask": "빌드 (자동 감지)"
         }
     ]
 }

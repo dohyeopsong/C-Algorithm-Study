@@ -1,26 +1,69 @@
+// {
+//     "version": "2.0.0",
+//     "tasks": [
+//         {
+//             "label": "현재파일 빌드하기",
+//             "type": "shell",
+//             "command": "/usr/bin/clang++",
+//             "args": [
+//                 "-fcolor-diagnostics",
+//                 "-fansi-escape-codes",
+//                 "-g",
+//                 "${file}",
+//                 "-o",
+//                 "${fileDirname}/${fileBasenameNoExtension}.out" 
+//             ],
+//             "group": {
+//                 "kind": "build",
+//                 "isDefault": true
+//             },
+//             "problemMatcher": [
+//                 "$gcc"
+//             ],
+//             "detail": "Clang으로 현재 파일을 빌드합니다."
+//         }
+//     ]
+// }
+
 {
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "현재파일 빌드하기",
+            "label": "빌드 (자동 감지)",
             "type": "shell",
-            "command": "/usr/bin/clang++",
-            "args": [
-                "-fcolor-diagnostics",
-                "-fansi-escape-codes",
-                "-g",
-                "${file}",
-                "-o",
-                "${fileDirname}/${fileBasenameNoExtension}.out"
-            ],
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
-            "problemMatcher": [
-                "$gcc"
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
+            /* [공통 설정] */
+            "args": [
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}.out" 
             ],
-            "detail": "Clang으로 현재 파일을 빌드합니다."
+            
+            /* [운영체제별 분기 처리] 여기가 핵심입니다 */
+            "linux": {  /* WSL 또는 리눅스일 때 */
+                "command": "/usr/bin/gcc", 
+                "detail": "WSL 환경에서 GCC로 빌드합니다."
+            },
+            "osx": {    /* 맥(macOS)일 때 */
+                "command": "/usr/bin/clang",
+                "args": [ /* 맥은 인자가 약간 다를 수 있어 덮어씁니다 */
+                    "-fcolor-diagnostics",
+                    "-fansi-escape-codes",
+                    "-g",
+                    "${file}",
+                    "-o",
+                    "${fileDirname}/${fileBasenameNoExtension}.out" 
+                ],
+                "detail": "Mac 환경에서 Clang으로 빌드합니다."
+            }
         }
     ]
 }
