@@ -53,7 +53,7 @@
                 "detail": "WSL 환경에서 GCC로 빌드합니다."
             },
             "osx": {    /* 맥(macOS)일 때 */
-                "command": "/usr/bin/clang",
+                "command": "/usr/bin/clang++",
                 "args": [ /* 맥은 인자가 약간 다를 수 있어 덮어씁니다 */
                     "-fcolor-diagnostics",
                     "-fansi-escape-codes",
@@ -61,6 +61,13 @@
                     "${file}",
                     "-o",
                     "${fileDirname}/${fileBasenameNoExtension}.out" 
+                ],
+                "group": {
+                    "kind": "build",
+                    "isDefault": true
+                },
+                "problemMatcher": [
+                    "$gcc"
                 ],
                 "detail": "Mac 환경에서 Clang으로 빌드합니다."
             }
