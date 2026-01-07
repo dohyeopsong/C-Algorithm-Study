@@ -1,0 +1,2 @@
+a                    F     ATTEND EXAM              
+b                    A     HOMEWORK                 
